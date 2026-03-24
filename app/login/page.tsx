@@ -15,7 +15,7 @@ export default function LoginPage() {
         <Volume2 key="volume" className="w-24 h-24 text-primary animate-pulse" />,
         <Stethoscope key="stethoscope" className="w-24 h-24 text-primary animate-pulse" />,
     ]
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIcon((prev) => (prev + 1) % icons.length)
@@ -32,7 +32,7 @@ export default function LoginPage() {
             <div className="hidden lg:flex lg:w-1/2 items-center justify-center bg-white/20 dark:bg-black/20 backdrop-blur-xs">
                 <div className="flex flex-col items-center justify-center space-y-6">
                     <span>
-                        <AudioLines className="w-14 h-14"/>
+                        <AudioLines className="w-14 h-14" />
                     </span>
                     <h2 className="text-2xl font-bold text-foreground text-center max-w-xs">
                         <TextType
@@ -41,6 +41,8 @@ export default function LoginPage() {
                             pauseDuration={1500}
                             showCursor={true}
                             cursorCharacter="|"
+                            variableSpeed={false}
+                            onSentenceComplete={() => { }}
                         />
                     </h2>
                 </div>
