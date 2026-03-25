@@ -116,12 +116,20 @@ export default function HearingTestPage() {
     gain.gain.setValueAtTime(gainValue, ctx.currentTime + duration / 1000 - 0.05)
     gain.gain.linearRampToValueAtTime(0, ctx.currentTime + duration / 1000)
 
-    const panner = ctx.createStereoPanner()
-    panner.pan.setValueAtTime(ear === "left" ? -1 : 1, ctx.currentTime)
+    const merger = ctx.createChannelMerger(2)
+    const splitter = ctx.createChannelSplitter(1)
+
+    gain.connect(splitter)
+
+    if (ear === "left") {
+      splitter.connect(merger, 0, 0) // left channel only
+    } else {
+      splitter.connect(merger, 0, 1) // right channel only
+    }
+
+    merger.connect(ctx.destination)
 
     osc.connect(gain)
-    gain.connect(panner)
-    panner.connect(ctx.destination)
     osc.start()
     oscillatorRef.current = osc
     setIsPlaying(true)
