@@ -384,7 +384,7 @@ export default function ResultsPage() {
 
         {/* ── Header ── */}
         <div className="text-center mb-10 mt-10">
-          <h1 className="text-4xl font-bold mb-2">Your Audiometry Report</h1>
+          <h1 className="text-2xl md:text-4xl font-bold mb-2">Your Audiometry Report</h1>
           <p className="text-muted-foreground">
             Pure Tone Audiometry (PTA) · Generated {testDate}
           </p>
@@ -445,7 +445,7 @@ export default function ResultsPage() {
 
         {/* ── Audiogram ── */}
         <Card className="p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
             <h2 className="text-2xl font-semibold">Pure Tone Audiogram</h2>
             <div className="flex gap-4">
               <span className="flex items-center gap-2 text-sm text-blue-500">
@@ -649,7 +649,7 @@ export default function ResultsPage() {
         </div>
 
         {/* ── Actions ── */}
-        <div className="grid grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           <Button className="w-full" onClick={() => window.print()}>
             <span className="material-symbols-outlined text-base mr-2">download</span>
             Download PDF Report
