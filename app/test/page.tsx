@@ -139,6 +139,15 @@ export default function HearingTestPage() {
 
   useEffect(() => () => stopTone(), [stopTone])
 
+  useEffect(() => {
+  // Keep Render backend alive
+  const ping = setInterval(() => {
+    fetch("https://hearsafe-backend.onrender.com/")
+      .catch(() => {})
+  }, 10 * 60 * 1000) // every 10 minutes
+  return () => clearInterval(ping)
+}, [])
+
   // ─── Calibration ────────────────────────────────────────────────────────────
   const toggleCheck = (i: number) => {
     setCalChecks(prev => prev.map((v, idx) => idx === i ? !v : v))
